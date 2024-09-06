@@ -1,0 +1,44 @@
+<form id="payment-form">
+    <label for="card-element">Credit or Debit Card</label>
+    <div id="card-element">
+        <!-- Stripe will insert the card form here -->
+    </div>
+    <button id="submit-button">Pay</button>
+</form>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    var stripe = Stripe('your-publishable-key');
+    var elements = stripe.elements();
+    var card = elements.create('card');
+    card.mount('#card-element');
+
+    var form = document.getElementById('payment-form');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        stripe.createToken(card).then(function(result) {
+            if (result.error) {
+                // Display error
+            } else {
+                // Send the token to your server
+                fetch('/payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        token: result.token,
+                        amount: 20 // Example amount
+                    })
+                }).then(response => response.json())
+                  .then(data => {
+                    if (data.success) {
+                        alert('Payment Successful!');
+                    } else {
+                        alert('Payment Failed');
+                    }
+                });
+            }
+        });
+    });
+</script>
