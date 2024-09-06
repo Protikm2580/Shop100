@@ -34,3 +34,49 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
+
+
+
+
+
+
+const express = require('express');
+const db = require('./database');
+const app = express();
+app.use(express.json());
+
+// Add Product
+app.post('/add-product', (req, res) => {
+    const { name, price, description, image } = req.body;
+    const sql = 'INSERT INTO products (name, price, description, image) VALUES (?, ?, ?, ?)';
+    db.query(sql, [name, price, description, image], (err, result) => {
+        if (err) throw err;
+        res.send('Product added successfully!');
+    });
+});
+
+// Get Products
+app.get('/products', (req, res) => {
+    const sql = 'SELECT * FROM products';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.send(results);
+    });
+});
+
+// Delete Product
+app.delete('/delete-product/:id', (req, res) => {
+    const { id } = req.params;
+    const sql = 'DELETE FROM products WHERE id = ?';
+    db.query(sql, [id], (err, result) => {
+        if (err) throw err;
+        res.send('Product deleted successfully!');
+    });
+});
+
+// Start the server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
