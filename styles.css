@@ -83,3 +83,49 @@ footer {
     padding: 5px 10px;
     cursor: pointer;
 }
+
+
+
+
+/* Checkout form styles */
+#checkout {
+    max-width: 400px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#checkout h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#checkout form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#checkout form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#checkout button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#checkout button:hover {
+    background-color: #218838;
+}
