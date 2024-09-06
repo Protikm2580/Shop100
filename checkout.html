@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Shop - Checkout</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pro Shop - Checkout</h1>
+    </header>
+
+    <section id="checkout">
+        <h2>Complete Your Payment</h2>
+        <form id="payment-form">
+            <label for="name">Name on Card</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" name="card-number" required>
+
+            <label for="expiry-date">Expiry Date</label>
+            <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/YY">
+
+            <label for="cvc">CVC</label>
+            <input type="text" id="cvc" name="cvc" required>
+
+            <button type="submit">Pay Now</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Pro Shop. All rights reserved.</p>
+    </footer>
+    
+    <script src="payment-scripts.js"></script>
+</body>
+  </html>
